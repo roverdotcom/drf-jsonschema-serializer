@@ -26,6 +26,10 @@ def field_to_jsonschema(field):
         result["title"] = field.label
     if field.help_text:
         result["description"] = field.help_text
+    # Add the default if it is set and ensure it is one of the native JSON types
+    # so it can be serialized to JSON.
+    if field.default and isinstance(field.default, (str, int, float, bool, list, dict)):
+        result["default"] = field.default
     return result
 
 
