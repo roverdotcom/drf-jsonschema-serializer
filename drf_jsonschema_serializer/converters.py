@@ -114,8 +114,9 @@ class DecimalFieldConverter(Converter):
     field_class = serializers.DecimalField
 
     def convert(self, field):
-        if field.max_digits is not None:
-            raise Error("max_digits not yet supported")
+        # This causes our Deciaml serializers to fail since they use max_digits.
+        # if field.max_digits is not None:
+        #     raise Error("max_digits not yet supported")
         if not getattr(field, "coerce_to_string", True):
             raise Error("coerce_to_string must be True")
         result = super(DecimalFieldConverter, self).convert(field)
