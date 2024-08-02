@@ -1,4 +1,4 @@
-from typing import Type, TypeVar
+from typing import Optional, Type, TypeVar, Union
 
 from jsonschema import Draft202012Validator, FormatChecker, RefResolver
 from jsonschema.exceptions import ValidationError as JSONSchemaValidationError
